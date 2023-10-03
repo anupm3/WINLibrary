@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 02, 2023 at 03:03 PM
+-- Generation Time: Oct 03, 2023 at 10:42 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -23,14 +23,14 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `dbwinlibrary` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `dbwinlibrary`;
 
+-- --------------------------------------------------------
 create user ASAR@'localhost' IDENTIFIED BY 'winlibrary@2023';
 
- and grand CRUD operations on phpmyadmin
+ 
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER
 	ON *.*
 	TO 'ASAR'@'localhost'
 	;
--- --------------------------------------------------------
 
 --
 -- Table structure for table `feedback_details`
@@ -38,12 +38,13 @@ GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER
 
 DROP TABLE IF EXISTS `feedback_details`;
 CREATE TABLE IF NOT EXISTS `feedback_details` (
-  `User_ID` int NOT NULL AUTO_INCREMENT,
+  `feedbackID` int NOT NULL AUTO_INCREMENT,
+  `studentID` int NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Message` text NOT NULL,
-  PRIMARY KEY (`User_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`feedbackID`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -169,6 +170,33 @@ INSERT INTO `tblmembership` (`studentID`, `studentName`, `email`, `password`, `p
 (111, 'a', 'a@g.c0m', '$2y$10$ZJuaThpiXK7BvFrxTaDj/u7/RECQHw8VlhtM3q7/5Sauyg.ZS7W4e', 1, NULL),
 (984796, 'Anup Maharjan', '984796@win.edu.au', '$2y$10$uzoO4/TUgpsADraSRY5OoOgrNQKYEE7B8W8N6EmNkfXMKLURIomzC', 493545884, NULL),
 (984797, 'A', '984797@win.edu.au', '$2y$10$A.Y1KO0zeYTF4KkH7vjB8OOXjmFOMKxAfs5jP4g4NbiDG.zwl2mS2', 493545884, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblteam`
+--
+
+DROP TABLE IF EXISTS `tblteam`;
+CREATE TABLE IF NOT EXISTS `tblteam` (
+  `teamID` int NOT NULL AUTO_INCREMENT,
+  `memberID` int NOT NULL,
+  `memberName` varchar(128) NOT NULL,
+  `role` varchar(128) NOT NULL,
+  `photoURL` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `webURL` longtext,
+  PRIMARY KEY (`teamID`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tblteam`
+--
+
+INSERT INTO `tblteam` (`teamID`, `memberID`, `memberName`, `role`, `photoURL`, `webURL`) VALUES
+(1, 983785, 'Aishwarya Reddy', 'IT Team', 'Aishwarya', NULL),
+(2, 984708, 'Simranpreet Kaur', 'Cataloging Specialist', 'Simran', NULL),
+(3, 984796, 'Anup Maharjan', 'Project Manager/ Leader', 'Anup', 'https://anup-maharjan.github.io/Personal/'),
+(4, 984949, 'Raj Kharel', 'QA', 'Raj', NULL);
 
 --
 -- Constraints for dumped tables

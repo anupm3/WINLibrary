@@ -23,7 +23,7 @@ a {
 		color: #451f55;
 }
 a:hover {
-		color: #08040a;
+		color: #f8c630;
 }
 
 button {
@@ -40,7 +40,8 @@ img {
 input[type=text],
 input[type=email],
 input[type=password],
-input[type=number] {
+input[type=number],
+textarea {
 		border: none;
 		border-bottom: 1px dashed #451f55;
 		padding: 10px;
@@ -57,9 +58,19 @@ input[type=number] {
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus,
-input[type=number]:focus {
+input[type=number]:focus,
+textarea:focus {
 		border: none;
 		border-bottom: 1px dashed #f8c630;
+}
+
+textarea {
+		border: 1px dashed #451f55;
+		height: 100px;
+		resize: none;
+}
+textarea:focus {
+		border: 1px solid #f8c630;
 }
 
 input[type=button],
@@ -561,28 +572,69 @@ form label {
 		padding: 20px;
 }
 
-.team-member {
-		text-align: center;
-		margin: 20px;
+@media (min-width: 768px) {
+		.gallery-block {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				    -ms-flex-flow: row wrap;
+				        flex-flow: row wrap;
+				-webkit-box-pack: justify;
+				    -ms-flex-pack: justify;
+				        justify-content: space-between;
+		}
 }
 
-.team-member img {
-		width: 100px; /* Adjust the maximum width as needed */
-		height: 100px; /* Maintain aspect ratio */
-		display: block; /* Remove extra space below images */
-		margin: 0 auto 10px; /* Center images and add margin at the bottom */
-		border-radius: 50%; /* Make the images circular */
+.team-member {
+		text-align: center;
+		margin: 0 10px 20px;
+		border: 1px solid #f8c630;
+		padding: 20px;
+		border-radius: 15px;
+}
+@media (min-width: 768px) {
+		.team-member {
+				width: 46%;
+		}
+}
+
+.team-member .img-holder {
+		width: 200px;
+		height: 200px;
+		display: block;
+		margin: 0 auto 10px;
+		border-radius: 50%;
 		-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-		        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+		        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		overflow: hidden;
+		position: relative;
+}
+.team-member .img-holder img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: scale(1) translate(-50%, -50%);
+		        transform: scale(1) translate(-50%, -50%);
+		-webkit-transition: -webkit-transform 400ms ease-in-out;
+		transition: -webkit-transform 400ms ease-in-out;
+		transition: transform 400ms ease-in-out;
+		transition: transform 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
+}
+.team-member .img-holder:hover img {
+		-webkit-transform: scale(1.1) translate(-50%, -50%);
+		        transform: scale(1.1) translate(-50%, -50%);
 }
 
 .team-member h3 {
 		font-size: 18px;
-		margin-top: 10px;
+		margin: 0 0 10px;
 }
 
 .team-member p {
 		font-size: 14px;
+		margin: 0 0 10px;
 }
 
 #footer {

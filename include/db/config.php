@@ -2,7 +2,7 @@
 /* remember to 
  create user ASAR@'localhost' IDENTIFIED BY 'winlibrary@2023';
 
- and grand CRUD operations on phpmyadmin
+ and grant CRUD operations on phpmyadmin
 GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER
 	ON *.*
 	TO 'ASAR'@'localhost'

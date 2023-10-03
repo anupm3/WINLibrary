@@ -36,32 +36,6 @@
 
         // after form validation
         createMember($conn, $id, $name, $email, $password, $phone);
-/*
-        
-        $tblnameMembership = "tblMembership";
-        $tblnamePhoto = "tblmemberphoto";
-        
-        
-        $query1 = "INSERT INTO $tblnameMembership 
-                (`studentID`, `studentName`, `email`, `password`, `phoneNumber`) 
-                VALUES 
-                ($id, '$name',  '$email', '$password', $phone);";
-        $query2 = "INSERT INTO $tblnamePhoto 
-            (`studentID`) 
-            VALUES 
-            ($id);";
-                //$query = "INSERT INTO `tblmembership` (`studentID`, `studentName`, `email`, `password`, `phoneNumber`, `photoID`, `photo`) VALUES ('984797', 'Anup Maharjan', '984796@win.edu.au', 'anup', '12121', NULL, 'test.jpg');";
-        //$conn is the variable for the connection which is generated from config.php file
-        if(mysqli_query($conn, $query1) && mysqli_query($conn, $query2)) 
-        {
-            echo "New membership created successfully";
-        } else {
-            echo "Error: " . $query1. "<br>" . $query2. "<br>". mysqli_error($conn);
-        }
-        
-        // Close the database connection
-        mysqli_close($conn);
-        */
     }
     else {
         header("location: ../../membership.php");

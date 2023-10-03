@@ -4,25 +4,54 @@
     padding: 20px;
 }
 
-.team-member {
-    text-align: center;
-    margin: 20px;
+.gallery-block {
+    @media(min-width: $tablet) {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
 }
 
-.team-member img {
-    width: 100px; /* Adjust the maximum width as needed */
-    height: 100px; /* Maintain aspect ratio */
-    display: block; /* Remove extra space below images */
-    margin: 0 auto 10px; /* Center images and add margin at the bottom */
-    border-radius: 50%; /* Make the images circular */
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+.team-member {
+    text-align: center;
+    margin: 0 10px 20px;
+    border: 1px solid $saffron;
+    padding: 20px;
+    border-radius: 15px;
+    @media(min-width: $tablet) {
+        width: 46%;
+    }
+}
+
+.team-member .img-holder {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(1) translate(-50%, -50%);
+        transition: transform $transition-time $transition-function;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1) translate(-50%, -50%);
+        }
+    }
 }
 
 .team-member h3 {
     font-size: 18px;
-    margin-top: 10px;
+    margin: 0 0 10px;
 }
 
 .team-member p {
     font-size: 14px;
+    margin: 0 0 10px;
 }

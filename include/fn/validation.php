@@ -12,6 +12,17 @@
         return $result;
     }
 
+    function emptyInputContact($id, $name, $email, $message) {
+        $result;
+        if(empty($id) || empty($name) || empty($email) || empty($message)) {
+            $result = true;
+        }
+        else {
+            $result = false;
+        }
+        return $result;
+    }
+
     function invalidUsername($name) {
         $result;
         if(!preg_match("/^[a-zA-Z 0-9]*$/", $name)) {
@@ -100,6 +111,21 @@
         mysqli_stmt_close($stmt1);
         mysqli_stmt_close($stmt2);
         header("location: ../../membership.php?error=none");
+        exit();
+    }
+
+    function createMessage($conn, $id, $name, $email, $message) {
+        $tblName = "feedback_details";
+        $sql = "INSERT INTO $tblName (studentID, Name, Email, Message) VALUES (?, ?, ?, ?);";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../../contactUs.php?error=stmtfailed");
+            exit(); // stop script from running
+        }
+        mysqli_stmt_bind_param($stmt, "isss", $id, $name, $email, $message);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        header("location: ../../contactUs.php?error=none");
         exit();
     }
 

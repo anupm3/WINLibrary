@@ -18,7 +18,7 @@ a {
 	transition: all $transition-time $transition-function;
 	color: $russian-violet;
 	&:hover {
-		color: darken($russian-violet, 20%);
+		color: $saffron;
 	}
 }
 
@@ -35,7 +35,8 @@ img {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+textarea {
 	border: none;
 	border-bottom: 1px dashed $russian-violet;
 	padding: 10px;
@@ -50,6 +51,15 @@ input[type="number"] {
 	&:focus {
 		border: none;
 		border-bottom: 1px dashed $saffron;
+	}
+}
+
+textarea {
+	border: 1px dashed $russian-violet;
+	height: 100px;
+	resize: none; 
+	&:focus {
+		border: 1px solid $saffron;
 	}
 }
 
